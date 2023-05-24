@@ -1,0 +1,34 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="App_todolist.controller.App">
+	<App>
+		<Page title="To-Do List" navButtonType="Emphasized">
+			<content>
+				<Panel headerText="Add Task">
+					<VBox justifyContent="Center" alignContent="Center">
+						<Input value="{/newItem}" placeholder="Enter task description..." liveChange="onLiveChange"/>
+						<!--<DatePicker value="{/eventTime}" width="100%" id="datePickr" placeholder="Select a date"/>-->
+						<Button text="Add" press="onAddTask"/>
+					<items/>
+					</VBox>
+				</Panel>
+				<Panel>
+					<List id="list" items="{/items}" mode="Delete" delete="onDeleteTask">
+						<items>
+							<!--<StandardListItem title="{title}" icon="{= ${completed} ? 'sap-icon://accept' : 'sap-icon://circle-task-2'}" selected="{completed}"
+							press="onToggleTask" type="Navigation"/>-->
+							<CustomListItem>
+								<VBox>
+									<HBox alignItems="Center" justifyContent="SpaceBetween">
+										<Title text="{title}" wrapping="true"/>
+										<!--<Button icon="sap-icon://save" press="onSaveTask" visible="{= ${completed}}"/>-->
+										<Button icon="sap-icon://edit" press="onEditTask" visible="{= !${completed}}"/>
+										<!--<Button icon="sap-icon://delete" press="onDeleteTask"/>-->
+									</HBox>
+								</VBox>
+							</CustomListItem>
+						</items>
+					</List>
+				</Panel>
+			</content>
+		</Page>
+	</App>
+</mvc:View>
